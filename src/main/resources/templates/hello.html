@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<h1>hello world</h1>
+<form  method="post"  action="/search">
+    姓名:<input type="text" name="name" >
+    年龄:<input type="text" name="age">
+    <input type="submit" value="添加">
+</form>
+<a href="/greeting">
+    <button>点我跳转到度娘！</button>
+</a>
+<audio   controls>
+    <source th:src="${mp3}" type="audio/mpeg">
+</audio>
+</body>
+</html>

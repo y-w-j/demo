@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>不懂音乐-播放列表</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+	<script type="text/javascript" src="js/index.js"></script>
+	<!-- <link rel="stylesheet" href="css/index.css" /> -->
+	<link rel="stylesheet" type="text/css" href="css/player.css">
+    <link rel="shortcut icon" href="32.png" type="image/x-icon" />
+	<link rel="stylesheet" href="css/music.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+</head>
+<body>
+<header class="header">
+	<div class="menu">
+		<ul>
+			<li><a href="/" class="active">首页</a></li>
+			<li><a href="/category">类型</a></li>
+			<li><a href="/singer">歌手</a></li>
+		</ul>
+	</div>
+	<div id="person">
+		<a href="/mymusic">
+			<img src="images/images/face-cm.png">
+			<!--不登录则用户id不显示-->
+			<div id="name">Perkin</div>
+		</a>
+	</div>
+	<div class="login">
+		<!--登录之后，取消显示-->
+		<a href="/login">登录</a>
+	</div>
+	<div class="out">
+		<a href="/login">退出</a>
+	</div>
+</header>
+<div class="main">
+	<script type="text/javascript">
+        window.onload = function(){
+            // // 格式化秒数到时间格式
+            // Number.prototype.formatTime=function(){
+            //     // 计算
+            //     var h=0,i=0,s=parseInt(this);
+            //     if(s>60){
+            //         i=parseInt(s/60);
+            //         s=parseInt(s%60);
+            //         if(i > 60) {
+            //             h=parseInt(i/60);
+            //             i = parseInt(i%60);
+            //         }
+            //     }
+            //     // 补零
+            //     var zero=function(v){
+            //         return (v>>0)<10?"0"+v:v;
+            //     };
+            //     return [zero(h),zero(i),zero(s)].join(":");
+            // };
+			//
+            // var audio = document.getElementById('audio');
+            // var time = audio.duration;
+            // document.getElementById('time').innerHTML = Number(time).formatTime();
+			//
+            // var f = audio.duration/6*1000;
+			//
+            // var one = audio.duration/6*1000;
+            // var two = audio.duration/6*2*1000;
+            // var three = audio.duration/6*3*1000;
+            // var four = audio.duration/6*4*1000;
+            // var five = audio.duration/6*5*1000;
+            // var six = audio.duration*1000;
+            // setTimeout(function(){
+            //     document.getElementById('lyric').scrollTop = document.getElementById('lyric').scrollHeight/6;
+            // },one);
+            // setTimeout(function(){
+            //     document.getElementById('lyric').scrollTop = document.getElementById('lyric').scrollHeight/6*2;
+            // },two);
+            // setTimeout(function(){
+            //     document.getElementById('lyric').scrollTop = document.getElementById('lyric').scrollHeight/6*3;
+            // },three);
+            // setTimeout(function(){
+            //     document.getElementById('lyric').scrollTop = document.getElementById('lyric').scrollHeight/6*4;
+            // },four);
+            // setTimeout(function(){
+            //     document.getElementById('lyric').scrollTop = document.getElementById('lyric').scrollHeight/6*5;
+            // },five);
+            // setTimeout(function(){
+            //     document.getElementById('lyric').scrollTop = document.getElementById('lyric').scrollHeight;
+            // },six);
+            fnScore();
+        };
+	</script>
+	<section >
+		<header class="title">
+			<span id="music">What do you mean?</span><div id="time"></div>
+			<em>521次购买</em>
+		</header>
+		<section class="background">
+			<aside class="album">
+				<div id="score-s">
+					<h2>评分：<span>4.2</span></h2>
+				</div>
+				<script type="text/javascript">
+                    function showHide(){
+                        var lyric = document.getElementById('lyric');
+                        if(lyric.style.display == 'block'){
+                            lyric.style.display = 'none';
+                        }else{
+                            lyric.style.display = 'block';
+                        }
+                    }
+				</script>
+				<div id="lyric-btn">
+					<a href="javascript:;" onclick="showHide()" class="newsBtn">歌词</a>
+				</div>
+				<div id="tags-s">
+					<h2>标签:</h2>
+					<ul>
+						<li>唱功好</li>
+						<li>音质好</li>
+						<li>特别</li>
+						<li>一般般</li>
+						<li>不好听</li>
+						<!-- 	<li></li>
+							<li></li>
+							<li></li> -->
+					</ul>
+				</div>
+				<img src="images/6 (5).jpg">
+			</aside>
+			<div id="lyric">
+				<table  class="list" >
+					<tr id="table-th">  <td>name</td> <td>singer</td><td>collect</td></tr>
+					<tr th:each="playEntry,playState:${playlist}">
+						<td > <a onclick="changeplay(this)"  th:data-path="${playEntry.singpath}"th:data-id="${playEntry.id}"th:text="${playEntry.singname}"></a></td>
+						<td th:text="${playEntry.singer}"></td>
+						<td><span class="fa fa-heart-o" th:data-value="${playEntry.id}" onclick="collect(this)"></span></td>
+					</tr> </table>
+			</div>
+		</section>
+		<!--若已购买，则不显示-->
+		<a href="javascript:;" class="buyBtn" id="buy" onclick="buyMusic();">购买此首歌曲</a>
+		<script type="text/javascript">
+            function buyMusic(){
+                var buyBtn = document.getElementById('buy');
+                if(confirm('是否要购买这首歌曲？')){
+                    buyBtn.style.display = 'none';
+                    document.getElementById('player').style.display = 'block';
+                    return true;
+                }
+                return false;
+            }
+		</script>
+		<section class="score-form" id="index">
+			<section id="score">
+				<h2>给歌曲评分</h2>
+				<ul class="scoreList">
+					<li>
+						<span>综合印象</span>
+						<nav>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+						</nav>
+						<input type="hidden" value="0" />
+					</li>
+					<li>
+						<span>服务指数</span>
+						<nav>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+						</nav>
+						<input type="hidden" value="0" />
+					</li>
+					<li>
+						<span>消费指数</span>
+						<nav>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+							<a href="javascript:;"></a>
+						</nav>
+						<input type="hidden" value="0" />
+					</li>
+				</ul>
+			</section>
+			<form action="" method="post" />
+			<section class="tags" id="indexTag">
+				<h2>给歌曲添加标签</h2>
+				<label>
+					<input type="radio" name="tags" value="唱功好" />
+					<span>唱功好</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="音质好" />
+					<span>音质好</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="前奏美" />
+					<span>前奏美</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="歌甜" />
+					<span>歌甜</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="特别" />
+					<span>特别</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="怀旧" />
+					<span>怀旧</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="一般般" />
+					<span>一般般</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="还不错" />
+					<span>还不错</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="难听" />
+					<span>难听</span>
+				</label>
+				<label>
+					<input type="radio" name="tags" value="挤爆了" />
+					<span>弱爆了</span>
+				</label>
+			</section>
+			<p class="info"></p>
+			<input type="hidden" value="0" name="score" id="average"/>
+			<input type="button" value="评分" class="btn submit"/>
+			</form>
+		</section>
+	</section>
+	<section class="page" id="mask">
+		<div>不懂音乐</div>
+	</section>
+	<div id="player">
+		<div class="audioplayer" style="height: 1em">
+			<div>
+				<div id="icon-backward" class="fa fa-backward " onclick="next()"></div>
+				<div id="icon-forward" class="fa fa-forward " onclick="next()"></div>
+			</div>
+		</div>
+		<audio id="audio" preload="auto"  src="audio.mp3" controls>
+			<!-- <source src="audio.mp3" />
+            <source src="audio.ogg" />
+            <source src="audio.wav" /> -->
+		</audio>
+	</div>
+	<script type="text/javascript">
+	</script>
+	<script src="js/main.js"></script>
+	<script src="js/audioplayer.js"></script>
+	<script>
+        $(function(){
+            var player = document.getElementById('player');
+            // var presrc = document.getElementById('audio').src;
+            var btn = document.getElementById('buy');
+            $( 'audio' ).audioPlayer();
+            document.getElementById('audio').addEventListener("ended",function(){
+
+            });
+
+        });
+	</script>
+</div>
+<footer>
+	<div class="footer">
+		<img src="images/images/footer.png">
+		<div id="logo"><img src="images/images/bd.png"></div>
+		<ul>
+			<li><a href="">联系我们</a>  |   <a href="">网站声明</a>  |   版权所有  |湘</li>
+		</ul>
+	</div>
+</footer>
+</body>
+<script>
+	function changeplay(e) {
+        var audio = document.getElementById("audio");
+        var src=e.getAttribute("data-path");
+		var id=e.getAttribute("data-id");
+		sessionStorage.setItem("singing",id);
+        audio.src=src;
+		audio.play();
+		document.getElementById("music").innerText=e.innerText;
+    }
+    function collect(e) {
+	    var singid=e.getAttribute("data-value");
+	    var userid=sessionStorage.getItem("userid");
+	    if(userid==null)
+		{
+		    alert("请先登录");
+		    return false;
+		}
+	    var data={
+	        userid: userid,
+			singid: singid
+		}
+
+        $.ajax({
+            url:"/collect",
+            dataType:"json",
+            data:data,
+            success:function (result) {
+                if(result.code==1){
+                    alert("已收藏该音乐");
+                    //$.tooltip('已收藏该音乐',2000,true);
+                    alert(result.message);
+				}
+                else {
+                        if(result.code=2)
+                           // $.tooltip('收藏成功',2000,true);
+                        alert("收藏成功");
+                }
+            },
+            error:function () {
+                alert("error");
+            }
+        })
+
+    }
+</script>
+</html>

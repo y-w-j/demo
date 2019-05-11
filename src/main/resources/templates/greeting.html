@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <title>Getting Started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Form</h1>
+<p th:text="${stu.age}"></p>
+<form action="#" th:action="@{/xxx}" th:object="${stu}" method="post">
+    <p>age: <input type="text" th:field="*{age}" /></p>
+    <p>name: <input type="text" th:field="*{name}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

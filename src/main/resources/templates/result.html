@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <title>我们敲代码的不懂音乐</title>
+</head>
+<body>
+<!--<p th:text="'sex: ' + ${sex} " />-->
+<!--<p th:text="'name: ' + ${name}" />-->
+<!--<p th:text="${listResult}"/>-->
+<p th:text="'age:'+${stu.age}"/>
+<p th:text="'name: ' + ${stu.name}" />
+<a href="/result">send</a>
+<!--<p th:text="'age1:'+${listResult[0].age}"/>-->
+<!--<p th:text="'nam2:'+${listResult[0].name}"/>-->
+
+<!--<table border="1" >-->
+    <!--<tr><td>No.</td> <td>userStat</td> <td>userEntry</td>  <td>username</td> <td>userage</td><td>hello</td> </tr>-->
+    <!--<tr th:each="userEntry,userStat:${listResult}"> <td th:text="${userStat.index}"></td> <td th:text="${userStat}"></td> <td th:text="${userEntry}"></td>-->
+        <!--<td th:text="${userEntry.name}"></td>-->
+        <!--<td th:text="${userEntry.age}"></td>-->
+        <!--<td>world</td>-->
+    <!--</tr> </table>-->
+
+</body>
+</html>

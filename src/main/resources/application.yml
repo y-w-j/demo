@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/people?serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    thymeleaf:
+      prefix: classpath:/templates/
+    resources:
+      static-locations: classpath:/,classpath:/resources/,classpath:/static/
+#    mvc:
+#      favicon:
+#        enabled: false
+ # thymeleaf:
+  #  mode: LEGACYHTML5
+mybatis:
+  mapper-locations: classpath:mapper/Mapper.xml,classpath:mapper/Music.xml,classpath:mapper/Socre.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.example.demo.entity  # 注意：对应实体类的路径

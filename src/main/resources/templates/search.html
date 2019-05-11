@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>随心音乐-我的音乐</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mymusic.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" href="css/animate.min.css"/>
+</head>
+<body>
+<header>
+    <div class="icon">
+        <img src="images/images/i2.png">
+        <span>我的音乐</span>
+    </div>
+    <div class="back">
+
+        <span><a href="/">&lt;&lt;返回</a></span>
+    </div>
+</header>
+<script type="text/javascript">
+    document.body.style.height = view().h+"px";
+</script>
+<section class="banner">
+    <section id="tabPic">
+        <ul id="picList">
+            <li><img src="images/banner1.jpg"/></li>
+            <li><img src="images/banner2.jpg"/></li>
+            <li><img src="images/banner3.png"/></li>
+            <li><img src="images/4.jpg"/></li>
+            <li><img src="images/5.jpg"/></li>
+        </ul>
+        <section class="picMask">
+            <p>音乐天地</p>
+            <nav>
+                <a href="javascript:;" class="active"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+            </nav>
+        </section>
+    </section>
+</section>
+<script type="text/javascript">
+    fnTab();
+</script>
+<section class="main">
+    <aside>
+        <section role="complementary">
+            <div class="sideBlock unSung">
+                <h1>*热门推荐</h1>
+                <a href="#">
+                    <img src="images/6 (7).jpg" alt="Midnight Run" />
+                </a>
+                <a href="#"><img class="sideImage" src="images/6 (9).jpg" alt="Wyatt Earp" /><span class="moreInfo">更多...</span>
+                </a>
+            </div>
+        </section>
+        <section role="complementary">
+            <div class="sideBlock overHyped">
+                <h1>*新歌推荐</h1>
+                <a href="#"><img src="images/6 (8).jpg" alt="Moulin Rouge" /></a>
+                <a href="#"><img class="sideImage" src="images/6 (10).jpg" alt="King Kong" /><span class="moreInfo">更多...</span></a>
+            </div>
+        </section>
+    </aside>
+    <section class="music">
+        <section id="search">
+            <input type="text"  placeholder="仅限搜索已拥有的歌曲" id="music-name"></input>
+            <button type="button" id="btn1">搜索</button>
+        </section>
+        <script type="text/javascript">
+            window.onload = function(){
+                var oTab=document.getElementById('tab1');
+                var oTxt=document.getElementById('music-name');
+                var oBtn=document.getElementById('btn1');
+
+                oBtn.onclick=function ()
+                {
+                    for(var i=0;i<oTab.tBodies[1].rows.length;i++)
+                    {
+                        var sTab=oTab.tBodies[1].rows[i].cells[1].innerHTML.toLowerCase();
+                        var sTxt=oTxt.value.toLowerCase();
+
+                        var arr=sTxt.split(' ');
+
+                        oTab.tBodies[1].rows[i].style.display='none';
+
+                        for(var j=0;j<arr.length;j++)
+                        {
+                            if(sTab.search(arr[j])!=-1)
+                            {
+                                oTab.tBodies[1].rows[i].style.display='table-row';
+
+                            }
+                        }
+
+                    }
+                };
+
+            };
+        </script>
+
+        </div><!-- box end -->
+        </div><!-- wrapper end -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.hDialog.min.js"></script>
+        <section id="list">
+            <span id="music-list">歌曲列表</span><i>10首歌</i>
+            <table class="list" id="tab1">
+                <tr id="table-th">
+                    <td>&nbsp;</td>
+                    <td>歌曲标题</td>
+                    <td>时长</td>
+                    <td>歌手</td>
+                    <td>类别</td>
+                </tr>
+                <tbody>
+                <tr th:each="playEntry,playState:${search}">
+                    <td th:text="${playState.index}"></td>
+                    <td > <a onclick="playlist(this)" th:data-value="${playEntry.singpath}" th:text="${playEntry.singname}"></a></td>
+                    <td th:text="${playEntry.singer}"></td>
+                    <td><span class="fa fa-heart-o" th:data-value="${playEntry.id}" onclick="collect(this)"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="content">
+            <a class="button" href="#">随心I&nbsp;期待您的加入！<span>&raquo;</span></a>
+        </section>
+    </section>
+
+</section>
+<div class="footer">
+    <img src="images/images/bd.png">
+    <ul>
+        <li><a href="">联系我们</a>  |   <a href="">网站声明</a>  |   </li>
+    </ul>
+</div>
+</body>
+</html>

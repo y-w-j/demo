@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>不懂音乐-首页</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+	<script type="text/javascript" src="js/index.js"></script>
+	<link rel="stylesheet" href="css/index.css" />
+	<link rel="shortcut icon" href="32.png" type="image/x-icon" />
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<script type="text/javascript" src="js/pageGroup.js"></script>
+</head>
+<body>
+	<header class="header">
+			<div class="menu">
+				<ul>
+					<li><a href="/" class="active">首页</a></li>
+					<li><a href="/category">类型</a></li>
+					<li><a href="/singer">歌手</a></li>
+
+				</ul>
+			</div>
+		<form class = "song_search" action="/searchname">
+			<ul>
+				<li>
+					<!--<input type="text"/>-->
+					<!--<button type="submit" class="fa fa-search"/>-->
+						<section id="search">
+							<input type="text"  placeholder="歌名，歌手" id="music-name" name="name"></input>
+							<button type="submit" id="btn1">搜索</button>
+						</section>
+				</li>
+			</ul>
+		</form>
+			<div id="person">
+				<a href="/mymusic">
+				<img src="images/images/face-cm.png">
+				<div id="name"></div>
+				</a>
+			</div>
+			<div class="login">
+				<a id="logmes" href="/login">登录</a>
+			</div>
+			<div class="out">
+				<a href="/login">退出</a>
+			</div>
+	</header>
+	<script type="text/javascript">
+  	document.body.style.height = view().h+"px";
+	</script>
+	<section class="banner">
+		<section id="tabPic">
+		      <ul id="picList">
+		        <li><img src="images/banner1.jpg"/></li>
+		        <li><img src="images/banner2.jpg"/></li>
+		        <li><img src="images/banner3.png"/></li>
+		        <li><img src="images/4.jpg"/></li>
+		        <li><img src="images/5.jpg"/></li>
+		      </ul>
+		      <section class="picMask">
+		        <p>音乐天地</p>
+		        <nav>
+		          <a href="javascript:;" class="active"></a>
+		          <a href="javascript:;"></a>
+		          <a href="javascript:;"></a>
+		          <a href="javascript:;"></a>
+		          <a href="javascript:;"></a>
+		        </nav>
+		      </section>
+		 </section> 
+	</section>
+	<script type="text/javascript">
+      fnTab();
+  	</script>
+
+  	<section class="main">
+  		<ul>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="/play"><img src="images/6 (1).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/1.ogg" width="190px" controls preload  loop>这里唱的：时间都去哪了</audio> -->
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="/play"><img src="images/6 (2).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="music.html"><img src="images/6 (3).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				</div>
+  			</li>
+  			<li class="listbox mr20">	
+  				<div class="listimg">
+  					<a href="music.html"><img src="images/6 (4).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/4.mp3" width="190px" controls preload loop>这里唱的：时间都去哪了</audio> -->
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="#"><img src="images/6 (5).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/5.mp3" width="190px" controls preload loop>这里唱的：时间都去哪了</audio> -->
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="#"><img src="images/6 (6).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/6.mp3" width="190px" controls preload  loop>这里唱的：时间都去哪了</audio> -->
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="#"><img src="images/6 (7).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/7.mp3" width="190px" controls preload  loop>这里唱的：时间都去哪了</audio> -->
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  					
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="#"><img src="images/6 (8).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/8.mp3" width="190px" controls preload loop>这里唱的：时间都去哪了</audio> -->
+
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="#"><img src="images/6 (9).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/9.mp3" width="190px" controls preload  loop>这里唱的：时间都去哪了</audio> -->
+
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="#"><img src="images/6 (10).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/10.mp3" width="190px" controls preload  loop>这里唱的：时间都去哪了</audio>
+ -->
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="#"><img src="images/6 (11).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/11.mp3" width="190px" controls preload  loop>这里唱的：时间都去哪了</audio> -->
+
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  			<li class="listbox mr20">
+  				<div class="listimg">
+  					<a href="#"><img src="images/6 (12).jpg" class="attachment-thumbnail wp-post-image" alt="" /></a>
+  					<div class="summary">
+  						<div class="summarytxt">	
+  							<!--<p>适合做图片类网站的特效，鼠标经过弹出标题，效果很不错</p>-->
+  						</div>
+  					</div>
+  				</div>
+  				<div class="listinfo">
+  					<!-- <audio src="./resource/12.mp3" width="190px" controls preload loop>这里唱的：时间都去哪了</audio> -->
+
+  					<div class="listtitle"><a href="#">按摩大脑的舒适女声浩室 What if I Say Please</a></div>
+  					<div class="listtag"><a href="#" rel="tag">摇滚</a><a href="#" rel="tag">女生</a></div>
+  					<div class="listdate">2015-06-18</div>
+  					<div class="listcomment">评分:5</div>
+  					<div class="listview">播放:6253</div>
+  				
+  				</div>
+  			</li>
+  		</ul>
+  	</section>
+		<script src='js/jquery.js'></script>
+		<script src="js/page.js"></script>
+	</section>
+</div>
+	<footer>
+	<div class="footer">
+			<!--<img src="images/images/footer.png">-->
+			<div id="logo"><img src="images/images/bd.png"></div>
+		<ul>
+			<li><a href="">联系我们</a>  |   <a href="">网站声明</a>  |   </li>
+		</ul>
+	</div>
+	</footer>
+</body>
+
+<script>
+   window.onload=function () {
+        var username=sessionStorage.getItem("username");
+		if(username==null){
+		    document.getElementById("name").innerText="";
+		    document.getElementById("logmes").innerText="登录";
+		}
+		else {
+            document.getElementById("name").innerText=username;
+            document.getElementById("logmes").innerText="退出";
+		}
+    }
+</script>
+</html>

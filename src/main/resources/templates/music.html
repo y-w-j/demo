@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/progress.css">
+    <link rel="stylesheet" type="text/css" href="css/player.css">
+    <meta charset="utf-8">
+    <title>菜鸟</title>
+    <!--标签页图标 -->
+    <link rel="shortcut icon" href="16.png" type="image/x-icon" />
+    <style>
+        /*#i{*/
+            /*width:70px;*/
+            /*height:70px;*/
+            /*background: url(img/1.jpg);*/
+        /*}*/
+        /*#icon-play{width: 20px; height: 20px;*/
+            /*!*background: url(img/1.jpg) no-repeat; *!*/
+            /*display: block; color: #000000;}*/
+        .audio-time{display: inline-block; vertical-align: middle;}
+        /*.progress{ width: 30%;  height: 20%;*/
+            /*position: absolute;  bottom: 0; left: 0;*/
+            /*background-image: linear-gradient(top, rgba(255, 255, 255, 0), #0099FF);*/
+            /*border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;*/
+            /*opacity: .4; }*/
+    </style>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+<img src="1.jpg">
+<audio  autoplay="autoplay" id="mus">
+    <source src="自我疗伤.mp3">
+    <source src="test1.mp3" type="audio/mpeg">
+    您的浏览器不支持 audio 元素。
+</audio>
+<!--<button  onclick="click_states()"  class="fa fa-play fa-3x" >-->
+    <!--<span id="icon-play" class="fa fa-play"></span>-->
+<!--</button>-->
+
+    <!--class="progress"-->
+    <!--<span class="start" progress-bar></span>-->
+<div class="audioplayer">
+    <div>
+        <div id="icon-backward" class="fa fa-backward " onclick="next()"></div>
+        <div id="icon-play" class="fa fa-play " onclick="click_states()"></div>
+        <div id="icon-forward" class="fa fa-forward " onclick="next()"></div>
+    </div>
+    <div class="audioplayer-time-current">
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <span class="audio-time"  id="playedTime" contenteditable="true">00:00</span>
+    </div>
+    <div class="audioplayer-bar" id="probar" onclick="pro()">
+        <div class="audioplayer-bar-played" id="change"></div>
+
+    </div>
+    <div class=" audioplayer-time-duration">
+    <span class="audio-time" id="audioTime" contenteditable="true">0</span>
+    </div>
+
+    <!--<span class="end"></span>-->
+</div>
+
+
+<div class="audioplayer-volume-adjust"><div><div style="height: 100%;"></div></div></div>
+<!--<button  onclick="next()" >下一曲</button>-->
+<br>
+
+<br>
+<br>
+</body>
+<script type="text/javascript"  >
+    var flag=1;
+    var music=document.getElementById("mus");
+    var img=document.getElementById("icon-play");
+    var txt=document.getElementById("audioTime");
+    var txt2=document.getElementById("playedTime");
+    var now=document.getElementById("change");
+    //加载音乐总时长
+    music.onloadedmetadata=function (ev) {
+        txt.innerText=transTime(this.duration);
+    }
+    //播放完毕自动播放下一曲
+    music.addEventListener("ended",audioEnded,false)
+    //自动更新播放时间
+    music.addEventListener("timeupdate",updateProgress,false);
+    // $('#mus').on("loadedmetadata",function () {
+    //     //alert(audio.duration)
+    //     $('#audioTime').text(transTime(this.duration));
+    // });
+    function click_states() {
+        if(music.paused){
+            music.play();
+            img.className="fa fa-pause ";
+            //img.style.background="url(img/2.jpg)";
+            //music.className="pause";
+            //$('.icon-btn').removeClass("play").addClass("pause");
+        }else {
+            music.pause();
+            img.className="fa fa-play ";
+           // img.style.background="url(img/1.jpg)";
+            //music.className="play";
+            //$('.icon-btn').removeClass("pause").addClass("play");
+        }
+
+    }
+    function next() {
+        img.className="fa fa-pause ";
+        music.src=("test2.mp3");
+        // music.load();
+    }
+    function audioEnded() {
+        music.src="沙漠骆驼.mp3";
+    }
+    //时间转换
+    function transTime(time) {
+        var duration = parseInt(time);
+        var minute = parseInt(duration/60);
+        var sec = duration%60+'';
+        var isM0 = ':';
+        if(minute == 0){
+            minute = '00';
+        }else if(minute < 10 ){
+            minute = '0'+minute;
+        }
+        if(sec.length == 1){
+            sec = '0'+sec;
+        }
+        return minute+isM0+sec
+    }
+
+    function updateProgress() {
+
+        var value = Math.round((Math.floor(music.currentTime) / Math.floor(music.duration)) * 100, 0);
+        now.style.width = value + '%';
+        txt2.innerText=transTime(music.currentTime);
+    }
+
+    function pro(ev) {
+        img.className="fa fa-pause ";
+        var coordStart = document.getElementById("probar").getBoundingClientRect().left;
+        var coordEnd = event.pageX;
+        var p = (coordEnd - coordStart) / document.getElementById("probar").offsetWidth;
+        now.style.width = p * 100 + '%';
+        music.currentTime = p * music.duration;
+        music.play();
+
+    }
+</script>
+
+</html>

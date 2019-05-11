@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.UserDao">
+<!--通过id查询项目信息-->
+<select id="selectById"
+        resultType="com.example.demo.entity.user">
+		select * from user where id=#{id}
+	</select>
+	<select id="selectAllUser"
+			resultType="int">
+		select id from user where id!=#{id}
+	</select>
+</mapper>
+<!--<mapper namespace="com.example.demo.dao.MusicDao">-->
+<!--&lt;!&ndash; 通过id查询项目信息 &ndash;&gt;-->
+<!--<select id="selectByCollect"-->
+        <!--resultType="com.example.demo.entity.Music">-->
+<!--select * from music a,mymusic b where b.userid=#{id} and a.id=b.singid-->
+<!--</select>-->
+<!--<update id="updateView">-->
+        <!--update music set viewed=viewed+1 where id=#{id}-->
+    <!--</update>-->
+<!--</mapper>-->
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.ScoreDao">
+    <!-- 通过id查询项目信息 -->
+    <select id="selectByUser"
+            resultType="com.example.demo.entity.Score">
+        select * from score where userid=#{userid} order by singid
+    </select>
+    <!--<select id="selectOne" -->
+            <!--resultType="com.example.demo.entity.Score">-->
+        <!--select * from score where userid=#{userid} and singid=#{singid}-->
+    <!--</select>-->
+    <update id="updatescore">
+        update score set score=#{score} where userid=#{userid} and singid=#{singid}
+    </update>
+</mapper>

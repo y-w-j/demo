@@ -1,0 +1,48 @@
+/** {*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
+/*.progress {*/
+    /*!*display: flex;*!*/
+    /*!*justify-content: space-between;*!*/
+    /*!*align-items: center;*!*/
+    /*!*width: 380px;*!*/
+    /*!*margin: 100px auto;*!*/
+/*}*/
+.progress-bar {
+    /*position: relative;*/
+    /*width: 200px;*/
+    /*height: 5px;*/
+    /*background-color: #eee;*/
+    /*vertical-align: 2px;*/
+    /*border-radius: 3px;*/
+    /*cursor: pointer;*/
+    /*-------------------*/
+    /*height: 0.875em; !* 14 *!*/
+    /*background-color: #222;*/
+    /*cursor: pointer;*/
+    /*z-index: 1;*/
+    /*top: 50%;*/
+    /*right: 6.875em; !* 110 *!*/
+    /*left: 6.875em; !* 110 *!*/
+    /*margin-top: -0.438em; !* 7 *!*/
+}
+.now {
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*display: inline-block;*/
+    /*!*height: 5px;*!*/
+    /*width: 0%;*/
+    /*background: #31c27c;*/
+
+    /*background: #007fd1;*/
+    /*z-index: 2;*/
+}
+.now::after {
+    /*content: '';*/
+    /*position: absolute;*/
+    /*left: 100%;*/
+    /*width: 3px;*/
+    /*height: 7px;*/
+    /*background-color: lightblue;*/
+}

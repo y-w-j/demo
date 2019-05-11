@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>随心音乐-播放列表</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+    <script type="text/javascript" src="js/index.js"></script>
+    <!-- <link rel="stylesheet" href="css/index.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/player.css">
+    <link rel="shortcut icon" href="32.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/music.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body>
+<header class="header">
+    <div class="menu">
+        <ul>
+            <li><a href="/" class="active">首页</a></li>
+            <li><a href="/category">类型</a></li>
+            <li><a href="/singer">歌手</a></li>
+        </ul>
+    </div>
+    <div id="person">
+        <a href="/mymusic">
+            <img src="images/images/face-cm.png">
+            <!--不登录则用户id不显示-->
+            <div id="name">Perkin</div>
+        </a>
+    </div>
+    <div class="login">
+        <!--登录之后，取消显示-->
+        <a href="/login">登录</a>
+    </div>
+    <div class="out">
+        <a href="/login">退出</a>
+    </div>
+</header>
+<div class="main">
+    <script type="text/javascript">
+        window.onload = function(){
+            fnScore();
+        };
+    </script>
+    <section >
+        <header class="title">
+            <span id="music">What do you mean?</span><div id="time"></div>
+            <em><i>521</i>&nbsp次购买</em>
+        </header>
+        <section class="background">
+            <aside class="album">
+                <div id="score-s">
+                    <h2>评分：<span>4.2</span></h2>
+                </div>
+                <script type="text/javascript">
+                    function showHide(){
+                        var lyric = document.getElementById('lyric');
+                        if(lyric.style.display == 'block'){
+                            lyric.style.display = 'none';
+                        }else{
+                            lyric.style.display = 'block';
+                        }
+                    }
+                </script>
+                <div id="lyric-btn">
+                    <a href="javascript:;" onclick="showHide()" class="newsBtn">歌词</a>
+                </div>
+                <div id="tags-s">
+                    <h2>标签:</h2>
+                    <ul>
+                        <li>唱功好</li>
+                        <li>音质好</li>
+                        <li>特别</li>
+                        <li>一般般</li>
+                        <li>不好听</li>
+                        <!-- 	<li></li>
+                            <li></li>
+                            <li></li> -->
+                    </ul>
+                </div>
+                <img src="images/6 (5).jpg">
+            </aside>
+            <div id="lyric">
+                <table border="3" >
+                    <tr>  <td>name</td> <td>singer</td><td>id</td> </tr>
+                    <tr th:each="playEntry,playStat:${playlist}">
+                        <td th:text="${playEntry.singname}"></td>
+                        <td th:text="${playEntry.singer}"></td>
+                        <td > <a onclick="playlist()" th:value="${playEntry.singname}" th:text="${playEntry.singname}"></a></td>
+                    </tr> </table>
+            </div>
+        </section>
+        <!--若已购买，则不显示-->
+        <a href="javascript:;" class="buyBtn" id="buy" onclick="buyMusic();">购买此首歌曲</a>
+        <script type="text/javascript">
+            function buyMusic(){
+                var buyBtn = document.getElementById('buy');
+                if(confirm('是否要购买这首歌曲？')){
+                    buyBtn.style.display = 'none';
+                    document.getElementById('player').style.display = 'block';
+                    return true;
+                }
+                return false;
+            }
+        </script>
+        <section class="score-form" id="index">
+            <section id="score">
+                <h2>给歌曲评分</h2>
+                <ul class="scoreList">
+                    <li>
+                        <span>综合印象</span>
+                        <nav>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                        </nav>
+                        <input type="hidden" value="0" />
+                    </li>
+                    <li>
+                        <span>服务指数</span>
+                        <nav>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                        </nav>
+                        <input type="hidden" value="0" />
+                    </li>
+                    <li>
+                        <span>消费指数</span>
+                        <nav>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                        </nav>
+                        <input type="hidden" value="0" />
+                    </li>
+                </ul>
+            </section>
+            <form action="" method="post" />
+            <section class="tags" id="indexTag">
+                <h2>给歌曲添加标签</h2>
+                <label>
+                    <input type="radio" name="tags" value="唱功好" />
+                    <span>唱功好</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="音质好" />
+                    <span>音质好</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="前奏美" />
+                    <span>前奏美</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="歌甜" />
+                    <span>歌甜</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="特别" />
+                    <span>特别</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="怀旧" />
+                    <span>怀旧</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="一般般" />
+                    <span>一般般</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="还不错" />
+                    <span>还不错</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="难听" />
+                    <span>难听</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="挤爆了" />
+                    <span>弱爆了</span>
+                </label>
+            </section>
+            <p class="info"></p>
+            <input type="hidden" value="0" name="score" id="average"/>
+            <input type="button" value="评分" class="btn submit"/>
+            </form>
+        </section>
+    </section>
+    <section class="page" id="mask">
+        <div>不懂音乐</div>
+    </section>
+    <div id="player">
+        <div class="audioplayer" style="height: 1em">
+            <div>
+                <div id="icon-backward" class="fa fa-backward " onclick="next()"></div>
+                <div id="icon-forward" class="fa fa-forward " onclick="next()"></div>
+                <span id="list" class="fa fa-list" onclick="muslist()"></span>
+            </div>
+        </div>
+        <audio id="audio" preload="auto" src="audio.mp3" controls>
+            <!-- <source src="audio.mp3" />
+            <source src="audio.ogg" />
+            <source src="audio.wav" /> -->
+        </audio>
+    </div>
+    <script type="text/javascript">
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/audioplayer.js"></script>
+    <script>
+        $(function(){
+            var player = document.getElementById('player');
+            $( 'audio' ).audioPlayer();
+            document.getElementById('audio').addEventListener("ended",function(){
+
+            });
+
+        });
+    </script>
+</div>
+<footer>
+    <div class="footer">
+        <img src="images/images/footer.png">
+        <div id="logo"><img src="images/images/logo.jpg"></div>
+        <ul>
+            <li><a href="">联系我们</a>  |   <a href="">网站声明</a>  |   中南大学版权所有  |湘ICP备05005659</li>
+        </ul>
+    </div>
+</footer>
+</body>
+<script>
+    function playlist() {
+        var audio = document.getElementById("audio");
+        var src=this.value;
+        alert(src);
+        audio.src=src;
+    }
+
+</script>
+</html>
